@@ -207,7 +207,7 @@ footer .subscribe-btn { background: linear-gradient(135deg, var(--p2) 0%, var(--
 .sol-grid > .sol-card { margin: 0; }
 
 /* Smaller compact solution cards */
-.sol-grid > .sol-card { max-width: 520px; justify-self: center; }
+.sol-grid > .sol-card { max-width: 360px; justify-self: center; }
 .sol-card { padding: clamp(12px, 2vw, 16px); gap:6px; }
 .sol-main h3 { font-size:22px; margin:3px 0; }
 .sol-desc { font-size:12.5px; margin:3px 0; }
@@ -219,6 +219,17 @@ footer .subscribe-btn { background: linear-gradient(135deg, var(--p2) 0%, var(--
 
 /* Lock Solutions layout: fixed card width and equal gaps */
 @media (min-width: 900px) {
-  .sol-grid { grid-template-columns: repeat(2, minmax(0, 520px)) !important; justify-content: center; column-gap: 12px !important; row-gap: 12px !important; }
-  .sol-grid > .sol-card { width: 520px; justify-self: center; }
+  .sol-grid { grid-template-columns: repeat(2, minmax(0, 360px)) !important; justify-content: center; column-gap: 12px !important; row-gap: 12px !important; }
+  .sol-grid > .sol-card { width: 360px; justify-self: center; }
 }
+
+/* Slightly more compact Solutions cards (keep grid spacing unchanged) */
+.sol-card { padding: clamp(10px, 1.8vw, 14px); gap: 5px; }
+.sol-main h3 { font-size: 20px; margin: 2px 0; }
+.sol-desc { font-size: 12px; margin: 2px 0; }
+.outcome-chips { gap: 4px; }
+.outcome-chip { padding: 2px 6px; font-size: 11px; }
+.list-grid { gap: 5px 8px; }
+.icon-item { gap: 4px; font-size: 12px; line-height: 1.15; }
+.icon-box { width: 11px; height: 11px; border-radius: 3px; }
+.list-center { margin: 6px auto 0; max-width: 420px; }

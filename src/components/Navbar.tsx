@@ -4,10 +4,10 @@ import Link from "next/link";
 import Image from "next/image";
 import { usePathname } from "next/navigation";
 
-const navItems = [
+const navItems: Array<{ href: string; label: string; external?: boolean }> = [
   { href: "/", label: "Home" },
   { href: "/about", label: "About" },
-  { href: "/blog", label: "Blog" },
+  { href: "https://neuraledge.blog", label: "Blog", external: true },
   { href: "/contact", label: "Contact" },
 ];
 
@@ -22,17 +22,27 @@ export default function Navbar() {
         </Link>
 
         <nav className="hidden md:flex items-center gap-6 text-sm">
-          {navItems.map((item) => (
-            <Link
-              key={item.href}
-              href={item.href}
-              className={`hover:opacity-100 transition-opacity duration-200 ${
-                pathname === item.href ? "opacity-100" : "opacity-80"
-              }`}
-            >
-              {item.label}
-            </Link>
-          ))}
+          {navItems.map((item) => {
+            const isActive = !item.external && pathname === item.href;
+            const className = `hover:opacity-100 transition-opacity duration-200 ${
+              isActive ? "opacity-100" : "opacity-80"
+            }`;
+            return item.external ? (
+              <a
+                key={item.href}
+                href={item.href}
+                target="_blank"
+                rel="noopener noreferrer"
+                className={className}
+              >
+                {item.label}
+              </a>
+            ) : (
+              <Link key={item.href} href={item.href} className={className}>
+                {item.label}
+              </Link>
+            );
+          })}
           <Link
             href="/contact#book"
             className="button-primary"

@@ -4,6 +4,8 @@ import Link from "next/link";
 import { useEffect } from "react";
 import Image from "next/image";
 import { CheckCircle2, Lock, ScrollText, Shield, Zap, MessageSquare, Clock3, DollarSign, BarChart3, Layers, ArrowRight, Calendar, Mail, Link2, BellIcon, AlertTriangleIcon } from "lucide-react";
+import { contactFormAction, type FormState } from "@/app/actions/email";
+import { useFormState } from "react-dom";
 
 export default function Home() {
   useEffect(() => {
@@ -19,6 +21,9 @@ export default function Home() {
     els.forEach((el) => io.observe(el));
     return () => io.disconnect();
   }, []);
+
+  const initialState = { ok: false, message: "" } as FormState;
+  const [formState, formAction] = useFormState(contactFormAction, initialState);
 
   return (
     <div>
@@ -294,11 +299,17 @@ export default function Home() {
           <div className="card card-pad reveal" style={{maxWidth:820, margin:"0 auto"}}>
             <h2>Contact Us</h2>
             <p className="small">We&apos;ll never share your data. Audit outputs remain yours.</p>
-            <form className="grid" style={{gap:12, marginTop:16}}>
-              <input className="bg-black/30 border border-[var(--border)] rounded-md px-3 py-2" placeholder="Name" required />
-              <input type="email" className="bg-black/30 border border-[var(--border)] rounded-md px-3 py-2" placeholder="Work Email" required />
-              <textarea className="bg-black/30 border border-[var(--border)] rounded-md px-3 py-2" placeholder="What problem should we tackle first?" rows={4} required />
+            <form action={formAction} className="grid" style={{gap:12, marginTop:16}} aria-live="polite">
+              <input name="source" type="hidden" value="home" />
+              <input name="name" className="bg-black/30 border border-[var(--border)] rounded-md px-3 py-2" placeholder="Name" required />
+              <input name="email" type="email" className="bg-black/30 border border-[var(--border)] rounded-md px-3 py-2" placeholder="Work Email" required />
+              <textarea name="message" className="bg-black/30 border border-[var(--border)] rounded-md px-3 py-2" placeholder="What problem should we tackle first?" rows={4} required />
               <button className="button-primary" type="submit">Send</button>
+              {formState.message ? (
+                <p className="small" style={{ marginTop: 8, color: formState.ok ? "#86efac" : "#fca5a5" }}>
+                  {formState.message}
+                </p>
+              ) : null}
             </form>
           </div>
         </div>

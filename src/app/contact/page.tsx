@@ -1,3 +1,5 @@
+import ContactForm from "./ContactForm";
+
 export default function ContactPage() {
   return (
     <div className="container-page section">
@@ -6,21 +8,7 @@ export default function ContactPage() {
 
       <a id="book" />
       <div className="grid gap-6 md:grid-cols-2">
-        <form className="card p-5 grid gap-4">
-          <label className="grid gap-1">
-            <span className="text-sm opacity-80">Name</span>
-            <input className="bg-black/30 border border-white/10 rounded-md px-3 py-2" name="name" required />
-          </label>
-          <label className="grid gap-1">
-            <span className="text-sm opacity-80">Work Email</span>
-            <input type="email" className="bg-black/30 border border-white/10 rounded-md px-3 py-2" name="email" required />
-          </label>
-          <label className="grid gap-1">
-            <span className="text-sm opacity-80">What problem should we tackle first?</span>
-            <input className="bg-black/30 border border-white/10 rounded-md px-3 py-2" name="problem" required />
-          </label>
-          <button className="btn-accent px-4 py-2 text-sm font-medium">Book a Free AI Integration Audit</button>
-        </form>
+        <ContactForm />
 
         <div className="card p-5">
           <div className="font-semibold mb-1">What you get</div>
@@ -34,4 +22,4 @@ export default function ContactPage() {
       </div>
     </div>
   );
-} 
+}
