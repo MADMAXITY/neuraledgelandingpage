@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 import { useFormState } from "react-dom";
 import { subscribeFormAction, type FormState } from "@/app/actions/email";
 
@@ -10,6 +11,9 @@ export default function Footer() {
     <footer className="mt-20 border-t border-white/10">
       <div className="container-page py-12 grid gap-8 md:grid-cols-4 text-sm">
         <div className="space-y-3 md:col-span-2">
+          <Link href="/" className="inline-flex items-center" aria-label="NeuralEdge Home">
+            <Image src="/logo.png" alt="NeuralEdge" width={112} height={112} className="h-8 w-auto" />
+          </Link>
           <p className="opacity-80">Integrated AI agents for meaningful work.</p>
           <form action={action} className="flex gap-2" aria-live="polite">
             <input
@@ -29,11 +33,9 @@ export default function Footer() {
         <div className="space-y-2">
           <div className="font-semibold">Links</div>
           <ul className="grid gap-1 opacity-80">
-            <li><Link href="/services">Services</Link></li>
-            <li><Link href="/process">Process</Link></li>
-            <li><Link href="/case-studies">Case Studies</Link></li>
-            <li><Link href="/benefits">Benefits</Link></li>
-            <li><Link href="/pricing">Pricing</Link></li>
+            <li><Link href="/smmc">SMMC</Link></li>
+            <li><Link href="/saas">SaaS</Link></li>
+            <li><Link href="/real-estate">Real Estate</Link></li>
           </ul>
         </div>
         <div className="space-y-2">

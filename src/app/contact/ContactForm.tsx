@@ -22,11 +22,10 @@ export default function ContactForm() {
         <span className="text-sm opacity-80">What problem should we tackle first?</span>
         <input className="bg-black/30 border border-white/10 rounded-md px-3 py-2" name="message" required />
       </label>
-      <button className="btn-accent px-4 py-2 text-sm font-medium" type="submit">Book a Free AI Integration Audit</button>
+      <button className="button-primary text-sm font-medium" type="submit">Book a Free AI Integration Audit</button>
       {state.message ? (
         <p className="small" style={{ marginTop: 4, color: state.ok ? "#86efac" : "#fca5a5" }}>{state.message}</p>
       ) : null}
     </form>
   );
 }
-
