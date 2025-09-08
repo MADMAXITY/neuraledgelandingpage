@@ -11,7 +11,13 @@ export const metadata: Metadata = {
   title: "NeuralEdge — Integrated AI agents for meaningful work",
   description:
     "Outcome-first AI integration to automate the robot work and scale meaningful work.",
-  icons: { icon: "/favicon.png" },
+  icons: {
+    icon: [
+      { url: "/favicon.png", type: "image/png", sizes: "any" },
+    ],
+    shortcut: ["/favicon.png"],
+    apple: ["/favicon.png"],
+  },
 };
 
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
